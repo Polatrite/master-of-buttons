@@ -195,7 +195,7 @@ app.controller("MainCtrl", ['$scope', '$interval', '$timeout', function(scope, $
             if(scope.newHighscore === 1) {
                 if(scope.player.highscores.length >= 2) {
                     var oldScore = Math.floor(scope.player.highscores[1]);
-                    scope.newMoney = ((scope.money - oldScore) * 15) + 100 + scope.money;
+                    scope.newMoney = ((scope.money - oldScore) * 6) + 100 + scope.money;
                 } else {
                     scope.newMoney = Math.floor(scope.newMoney*2.5);
                 }
