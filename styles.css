@@ -1,0 +1,187 @@
+body {
+    min-width: 1080px;
+}
+
+.rows {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.columns {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.section-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.currency-container {
+    width: 800px;
+    height: 800px;
+}
+
+.utility-container {
+    width: 200px;
+    height: 960px;
+}
+
+.upgrade-container {
+    width: 480px;
+}
+
+.btn-currency {
+    width: 160px;
+    height: 160px;
+    flex: 1 20%;
+}
+
+.btn-utility {
+    width: 160px;
+    height: 120px;
+    margin: 20px 20px;
+}
+
+.btn-buy-upgrade {
+    width: 240px;
+    height: 60px;
+    margin: 10px 10px;
+}
+
+.end-game-modal {
+    z-index: 100;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    
+    width: 480px;
+    margin-left: -240px;
+    height: 200px;
+    margin-top: -100px;
+    
+    text-align: center;
+    
+    background-color: #789FC5;
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+
+.bought {
+    background-image: linear-gradient(to bottom, #ccc 0%, #e0e0e0 100%)
+}
+
+h3, h4, h5 {
+    margin-top: 6px;
+    margin-bottom: 4px;
+}
+
+
+.color-molasses {
+    background-image: linear-gradient(to bottom, #E4B45D 0%, #FFFFFF 100%)
+}
+
+.color-blitz {
+    background-image: linear-gradient(to bottom, #79DE66 0%, #FFFFFF 100%)
+}
+
+.color-support {
+    background-image: linear-gradient(to bottom, #E8C3E7 0%, #FFFFFF 100%)
+}
+
+.color-slug {
+    background-image: linear-gradient(to bottom, #C3A201 0%, #FFFFFF 100%)
+}
+
+.color-weakness {
+    background-image: linear-gradient(to bottom, #A2A19B 0%, #FFFFFF 100%)
+}
+
+.color-quick {
+    background-image: linear-gradient(to bottom, #F9F6A0 0%, #FFFFFF 100%)
+}
+
+.color-carry {
+    background-image: linear-gradient(to bottom, #FD9C9C 0%, #FFFFFF 100%)
+}
+
+.color-tango {
+    background-image: linear-gradient(to bottom, #FD9CCD 0%, #FFFFFF 100%)
+}
+
+.color-flight {
+    background-image: linear-gradient(to bottom, #9CF0FD 0%, #FFFFFF 100%)
+}
+
+.color-flit {
+    background-image: linear-gradient(to bottom, #D3F2F7 0%, #FFFFFF 100%)
+}
+
+.color-hungry {
+    background-image: linear-gradient(to bottom, #C19081 0%, #FFFFFF 100%)
+}
+
+.color-group {
+    background-image: linear-gradient(to bottom, #5E9FD8 0%, #FFFFFF 100%)
+}
+
+.color-line {
+    background-image: linear-gradient(to bottom, #A5A5A5 0%, #FFFFFF 100%)
+}
+
+
+
+
+
+.color-rocket {
+    background-image: linear-gradient(to bottom, #E4E63F 0%, #FFFFFF 100%)
+}
+
+.color-team {
+    background-image: linear-gradient(to bottom, #28CACA 0%, #FFFFFF 100%)
+}
+
+.color-turbulent {
+    background-image: linear-gradient(to bottom, #9975B5 0%, #FFFFFF 100%)
+}
+
+.color-greed {
+    background-image: linear-gradient(to bottom, #C3C79A 0%, #FFFFFF 100%)
+}
+
+.color-depth {
+    background-image: linear-gradient(to bottom, #ADA58A 0%, #FFFFFF 100%)
+}
+
+.color-know {
+    background-image: linear-gradient(to bottom, #B087FF 0%, #FFFFFF 100%)
+}
+
+.color-average {
+    background-image: linear-gradient(to bottom, #CACACA 0%, #FFFFFF 100%)
+}
+
+.color-trinket {
+    background-image: linear-gradient(to bottom, #88ADF1 0%, #FFFFFF 100%)
+}
+
+.color-fast {
+    background-image: linear-gradient(to bottom, #CCFF00 0%, #FFFFFF 100%)
+}
+
+.color-harass {
+    background-image: linear-gradient(to bottom, #63AD76 0%, #FFFFFF 100%)
+}
+
+.color-blast {
+    background-image: linear-gradient(to bottom, #F97334 0%, #FFFFFF 100%)
+}
+
+.color-hard {
+    background-image: linear-gradient(to bottom, #907575 0%, #FFFFFF 100%)
+}
+

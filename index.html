@@ -1,11 +1,12 @@
 <html ng-app="app">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Angular Seed</title>
+	<title>Master of Buttons</title>
 	<!--<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>-->
 
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="bower_components/angular-tooltips/src/css/angular-tooltips.css" rel="stylesheet" type="text/css" />
     <link href="styles.css" rel="stylesheet">
 
 </head>
@@ -36,30 +37,86 @@
 	</div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        {{ money }}
-    </div>
-    <div class="col-md-4">
-        
-    </div>
-    <div class="col-md-4">
-        
-    </div>
+<div class="end-game-modal" ng-show="gameEnded">
+	<h1>Score: ${{money}}</h1>
+	<h2>Earned upgrade money: ${{newMoney}}</h2>
+	<h4 ng-show="newHighscore">New highscore rank #{{newHighscore}}</h4>
 </div>
 
-<button type="button" id="resetGame" class="btn btn-default color-coral pull-left">Reset Game</button>
+<div class="status">
+	<h2>Money: ${{money}}&nbsp;&nbsp;&nbsp;&nbsp;Clicks left: {{clicks}} of {{player.clicksTotal}}&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" ng-click="btnRestartGame();">Shuffle Board</button></h2>
+	{{ clickNames.length > 0 ? clickNames.join(', ') : 'No clicks.' }}
+</div>
+
+<div class="section-container">
+	<div class="currency-container rows">
+	    <div ng-repeat="button in buttons">
+	        <button type="button" class="btn btn-default btn-currency {{ 'color-' + button.id }}" ng-click="btnCurrencyClick(button, true);" ng-disabled="disableInteraction || paused">
+	        	<h4>{{button.name}} <i class="glyphicon glyphicon-star" ng-show="button.starred"></i></h4><br>
+	        	<b style="font-size: 1.2em;">${{ getButtonMoney(button) }}</b>
+	        	<span ng-show="button.valueMultiplier !== 1">(${{button.value}} * {{button.valueMultiplier}})</span><br>
+	        	<div ng-show="button.growthSelf">Itself gets ${{button.growthSelf}}</div>
+	        	<div ng-show="button.adjacentGrowth"><i class="glyphicon glyphicon-plus"></i> Adjacent gets ${{button.adjacentGrowth}}</div>
+	        	<div ng-show="button.nearbyGrowth"><i class="glyphicon glyphicon-th"></i> Nearby gets ${{button.nearbyGrowth}}</div>
+	        	<div ng-show="button.rowGrowth"><i class="glyphicon glyphicon-resize-horizontal"></i> Row gets ${{button.rowGrowth}}</div>
+	        	<div ng-show="button.rowMultiplier"><i class="glyphicon glyphicon-resize-horizontal"></i> Row gets &#x2718;{{button.rowMultiplier/10}}</div>
+	        	<div ng-show="button.columnGrowth"><i class="glyphicon glyphicon-resize-vertical"></i> Column gets ${{button.columnGrowth}}</div>
+	        	<div ng-show="button.columnMultiplier"><i class="glyphicon glyphicon-resize-vertical"></i> Column gets &#x2718;{{button.columnMultiplier/10}}</div>
+	        </button>
+	    </div>
+	</div>
+	<div class="utility-container columns">
+	    <div ng-repeat="i in [1,2,3,4,5]">
+	    	<button type="button" class="btn btn-default btn-utility" ng-click="btnUtilityClick(i, 'rowMoney');" ng-disabled="disableInteraction || paused" ng-show="player.upgrades['gimmeRows']">
+	    		<h4>Gain Row</h4>
+    			<span ng-show="player.upgrades['totally']"><b>${{ getRowMoney($index+1) }}</b></span>
+	    	</button>
+	    </div>
+    	<button type="button" class="btn btn-default btn-utility" ng-click="btnUtilityClick(-1, 'diagonalMoney');" ng-disabled="disableInteraction || paused" ng-show="player.upgrades['diagonalTrick']">
+    		<h4>Gain Diagonal <span ng-show="player.upgrades['doubleDiagonal']">x2</span></h4>
+    		<span ng-show="player.upgrades['totally']"><b>${{ getRowMoney(-1) }}</b></span>
+    	</button>
+	</div>
+	<div class="upgrade-container columns">
+		<h3 tooltips title="Derp">Upgrade Money: ${{player.upgradeMoney}}</h3>
+		
+		<div ng-repeat="upgrade in upgrades | limitTo:6">
+			<button type="button" class="btn btn-default btn-buy-upgrade" ng-click="btnBuyUpgradeClick(upgrade);" ng-disabled="disableInteraction || paused"
+				tooltips title="{{upgrade.tooltip}}">
+				{{upgrade.name}} - <b>${{upgrade.cost}}</b>
+			</button>
+		</div>
+		
+		<h3>Highscores</h3>
+		<div ng-repeat="score in player.highscores | limitTo:25 track by $index">
+			<b>{{$index+1}}. {{score}}</b> - <i>({{player.highscoreNames[$index]}})</i>
+		</div>
+	</div>
+</div>
+
+<button type="button" id="resetGame" class="btn btn-default color-coral pull-left" ng-click="btnResetGame();">Reset Game</button>
 <button type="button" id="saveGameTextExport" class="btn btn-default color-food pull-left" data-toggle="modal" data-target="#saveLoadModal">Save/Load via Text</button>
 
 
 
 
 <script src="bower_components/angular/angular.js" text="type/javascript"></script>
+<script src="bower_components/angular-tooltips/src/js/angular-tooltips.js" text="type/javascript"></script>
 <script src="bower_components/jquery/dist/jquery.js" text="type/javascript"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js" text="type/javascript"></script>
 <script src="bower_components/underscore/underscore.js" text="type/javascript"></script>
 
 <script src="savefile.js" text="type/javascript"></script>
 <script src="game.js" text="type/javascript"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68487103-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html>

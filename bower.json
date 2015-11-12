@@ -17,6 +17,7 @@
     "angular": "~1.4.6",
     "bootstrap": "~3.3.5",
     "underscore": "~1.8.3",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "angular-tooltips": "~0.1.23"
   }
 }
