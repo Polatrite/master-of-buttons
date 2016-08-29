@@ -1,24 +1,23 @@
-       if(scope.player.upgrades['greed'])
-            scope.buttons.push(new Button({ name: 'Greed', value: 55, growthSelf: 30, adjacentGrowth: -5 }));
-        if(scope.player.upgrades['turbulent'])
-            scope.buttons.push(new Button({ name: 'Turbulent', value: 70, adjacentGrowth: 10 }));
-        if(scope.player.upgrades['harass'])
-            scope.buttons.push(new Button({ name: 'Harass', value: 60, growthSelf: 35, adjacentGrowth: -10 }));
-        if(scope.player.upgrades['average'])
-            scope.buttons.push(new Button({ name: 'Average', value: 10, growthSelf: 15, adjacentGrowth: 10, nearbyGrowth: 5 }));
-        if(scope.player.upgrades['rocket'])
-            scope.buttons.push(new Button({ name: 'Rocket', value: 5, growthSelf: 40, adjacentGrowth: 5 }));
-        if(scope.player.upgrades['know'])
-            scope.buttons.push(new Button({ name: 'Know', value: -10, rowGrowth: 10, adjacentGrowth: 10, nearbyGrowth: 5 }));
-        if(scope.player.upgrades['team'])
-            scope.buttons.push(new Button({ name: 'Team', value: 10, adjacentGrowth: 30 }));
-        if(scope.player.upgrades['trinket'])
-            scope.buttons.push(new Button({ name: 'Trinket', value: 45, growthSelf: 20, adjacentGrowth: 5 }));
-        if(scope.player.upgrades['blast'])
-            scope.buttons.push(new Button({ name: 'Blast', value: 15, growthSelf: 20, adjacentGrowth: 15 }));
-        if(scope.player.upgrades['fast'])
-            scope.buttons.push(new Button({ name: 'Fast', value: 50, growthSelf: 25 }));
-        if(scope.player.upgrades['depth'])
-            scope.buttons.push(new Button({ name: 'Depth', value: 10, growthSelf: -10, columnGrowth: 25 }));
-        if(scope.player.upgrades['hard'])
-            scope.buttons.push(new Button({ name: 'Hard', value: 120, growthSelf: -10 }));
+# master-of-buttons
+
+A simple HTML5 game designed around the best money-making strategy for clicking buttons. This was created for a 48-hour personal game jam.
+
+* Angular
+* Bootstrap
+* Underscore (I should upgrade to Lodash!)
+
+## How to Use
+
+1. Clone the repository
+1. Open index.html in your web browser
+1. That's all!
+1. Optionally, bower install to update bower_components
+
+## How to Collaborate
+
+1. Make a pull request with anything you thing is cool.
+1. Submit it! This is a simple game jam project, so I'll almost always accept!
+
+#### Created by Polatrite
+
+This is what happens when my wife leaves town for the weekend.
